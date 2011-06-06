@@ -4,7 +4,7 @@
  * This is a microbenchmark to test a feature of Akka, namely ReceiveTimeout.
  *
  * The algorithm sends 'ping' messages to some initial workers (akka-actors). These than randomly
- * choose a worker to send another 'ping' message. At every worker, the message hop is decreased until
+ * choose a worker to send another 'ping' message to. At each worker, the message hop is decreased until
  * it reaches zero, converging the algorithm to terminate.
  *
  */
