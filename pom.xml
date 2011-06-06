@@ -79,8 +79,8 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>poke.WorkerPoker</mainClass>
-							<packageName>poke</packageName>
+							<mainClass>ping.RandomHopsPing</mainClass>
+							<packageName>ping</packageName>
 						</manifest>
 					</archive>
 				</configuration>
