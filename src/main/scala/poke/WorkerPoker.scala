@@ -1,3 +1,13 @@
+/**
+ * @author Francisco de Freitas
+ *
+ * This is a microbenchmark to test a feature of Akka, namely ReceiveTimeout.
+ *
+ * The algorithm sends 'poke' messages to some initial workers (akka-actors). These than randomly
+ * choose a worker to send another 'poke' message. At every worker, the 'poke' hop is decreased until
+ * it reaches zero, converging the algorithm to terminate.
+ *
+ */
 package poke
 
 import akka.actor.Actor
@@ -46,7 +56,7 @@ object WorkerPoker extends App {
 
       case ReceiveTimeout =>*/
 
-      def receive = {
+    def receive = {
 
       case Poke(hops) =>
         if (hops == 0)
@@ -78,7 +88,7 @@ object WorkerPoker extends App {
 
         println("Master start run #" + reps)
 
-        start = System.currentTimeMillis
+        start = System.nanoTime
 
         // send to half of the workers some messages
         for (i <- 0 until (Math.floor(numWorkers / 2)).asInstanceOf[Int])
@@ -88,10 +98,11 @@ object WorkerPoker extends App {
       case End =>
         receivedEnds += 1
 
+        // all messages have reached 0 hops
         if (receivedEnds == Math.floor(numWorkers / 2).asInstanceOf[Int] * numMessages) {
-          end = System.currentTimeMillis
+          end = System.nanoTime
 
-          println("Run #" + reps + " ended! Time = " + (end - start) + "ms")
+          println("Run #" + reps + " ended! Time = " + ((end - start) / 1000000.0) + "ms")
 
           runs = (end - start) :: runs
 
@@ -114,7 +125,7 @@ object WorkerPoker extends App {
     override def postStop {
       println("End: " + new Date(System.currentTimeMillis))
       val avg = runs.foldLeft(0l)(_ + _) / runs.size
-      println("Average execution time = " + avg + " ms")
+      println("Average execution time = " + avg / 1000000.0 + " ms")
       System.exit(0)
     }
 
