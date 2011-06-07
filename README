@@ -1,3 +1,24 @@
 Trying to prove the expensive use of mailboxSize in a feature of Akka, in this case, showing the bottleneck on the receive timeout feature.
 
 Uncomment lines 43 to 47 and comment line 49 to perform the benchmark differences.
+
+Benchmark results: (notice the difference in the parameters used. if I used the same ones, it would take much longer)
+
+=-= Using receive timeout =-=
+Workers: 8
+Messages: 10000
+Hops: 100
+Repetitions: 5
+
+Average execution time = 481584 ms
+............................................................
+
+=-= Without receive timeout =-=
+Workers: 8
+Messages: 100000
+Hops: 200
+Repetitions: 5
+
+Average execution time = 53310 ms
+
+Difference = 481584 / 53310 = 9.033
