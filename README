@@ -2,7 +2,7 @@ Trying to prove the expensive use of mailboxSize in a feature of Akka, in this c
 
 Uncomment lines 43 to 47 and comment line 49 to perform the benchmark differences.
 
-Benchmark results: (notice the difference in the parameters used. if I used the same ones, it would take much longer)
+Benchmark results:
 
 =-= Using receive timeout =-=
 Workers: 8
