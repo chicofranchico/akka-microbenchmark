@@ -2,6 +2,8 @@ Trying to prove the expensive use of mailboxSize in a feature of Akka-2.0, in th
 
 Uncomment lines 43 to 47 and comment line 49 to perform the benchmark differences.
 
+The benchmark was performed in a machine with 24 AMD Opteron 6174's and 66111860 kB of RAM
+
 Benchmark results: (jvm parameters: -Xmx4096m -Xms4096m)
 
 a)
