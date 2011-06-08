@@ -15,10 +15,10 @@ Average execution time = 481584 ms
 
 =-= Without receive timeout =-=
 Workers: 8
-Messages: 100000
-Hops: 200
+Messages: 10000
+Hops: 100
 Repetitions: 5
 
-Average execution time = 53310 ms
+Average execution time = 2772 ms
 
-Difference = 481584 / 53310 = 9.033
+Difference = 481584 / 2772 ~ 173.731
